@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HTML과 빅데이터로 돈 벌기</title>
+  <meta name="description" content="비전공자도 HTML과 데이터 시각화로 자동 수익 구조를 만드는 실전 가이드" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💰</text></svg>">
+  <!-- Chart.js (시각화 예제용) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- 구글 애드센스는 승인 후 아래 주석을 해제하세요 -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR-ADSENSE-CLIENT" crossorigin="anonymous"></script> -->
+  <style>
+    :root{
+      --bg:#f7fbff;      /* 밝은 배경 */
+      --card:#ffffff;
+      --text:#0f172a;    /* slate-900 */
+      --muted:#475569;   /* slate-600 */
+      --blue:#2563eb;    /* 파랑 포인트 */
+      --blue-2:#1d4ed8;
+      --line:#e2e8f0;    /* 경계선 */
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Pretendard,Apple SD Gothic Neo,Noto Sans KR,sans-serif}
+    a{color:var(--blue);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1000px;margin:0 auto;padding:24px}
+    .nav{position:sticky;top:0;background:rgba(247,251,255,.88);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--line);z-index:50}
+    .nav-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:12px 24px}
+    .brand{font-weight:800;letter-spacing:.2px;color:var(--blue)}
+    .menu{margin-left:auto;display:flex;gap:16px;flex-wrap:wrap}
+    .menu a{padding:8px 10px;border-radius:10px}
+    .menu a:hover{background:#eaf1ff}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;margin-top:24px}
+    .hero-card{background:linear-gradient(180deg,#ffffff, #f1f5ff);border:1px solid var(--line);border-radius:18px;padding:28px}
+    .h1{font-size:34px;line-height:1.2;margin:0 0 12px}
+    .muted{color:var(--muted)}
+    .cta{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+    .btn{background:var(--blue);color:#fff;border:none;border-radius:12px;padding:12px 16px;font-weight:700;cursor:pointer}
+    .btn:hover{background:var(--blue-2)}
+    .btn-ghost{background:#eaf1ff;color:var(--blue);border:1px solid #cfe0ff}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{grid-column:span 12;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+    @media(min-width:900px){
+      .span-6{grid-column:span 6}
+      .span-4{grid-column:span 4}
+      .span-8{grid-column:span 8}
+    }
+    .badge{display:inline-block;background:#eaf1ff;color:var(--blue);border:1px solid #cfe0ff;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700}
+    .kicker{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:800}
+    .footer{margin:48px 0 12px;color:var(--muted);font-size:14px;text-align:center}
+    .list{margin:0;padding-left:18px}
+    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+    code{background:#f1f5f9;border:1px solid var(--line);padding:3px 6px;border-radius:8px}
+    .ad-slot{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:12px;padding:14px;color:#64748b;text-align:center}
+    .table{width:100%;border-collapse:collapse}
+    .table th,.table td{border-bottom:1px solid var(--line);padding:10px;text-align:left;font-size:14px}
+    .hint{font-size:13px;color:#64748b}
+    .ok{color:#059669;font-weight:700}
+  </style>
+</head>
+<body>
+  <!-- 상단 내비게이션 -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">💰 HTML × 빅데이터</div>
+      <div class="menu">
+        <a href="#home">홈</a>
+        <a href="#guide">실전 가이드</a>
+        <a href="#viz">데이터 시각화</a>
+        <a href="#money">수익 전략</a>
+        <a href="#resources">템플릿</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container" id="home">
+    <!-- 히어로 -->
+    <section class="hero">
+      <div class="hero-card">
+        <div class="kicker">Make Money with Data & Code</div>
+        <h1 class="h1">HTML과 데이터로 <span style="color:var(--blue)">쉽게 수익</span> 만드는 법</h1>
+        <p class="muted">비전공자도 가능한 실전형 가이드: GitHub Pages로 무료 배포, 공공데이터 시각화, 광고·제휴·템플릿 판매까지.</p>
+        <div class="cta">
+          <a class="btn" href="#guide">시작하기</a>
+          <a class="btn btn-ghost" href="#money">수익 구조 보기</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <span class="badge">데모</span>
+        <h3>한눈에 보는 수익 목표</h3>
+        <table class="table">
+          <thead><tr><th>항목</th><th>현실적 월 목표</th></tr></thead>
+          <tbody>
+            <tr><td>블로그 광고/제휴</td><td>5~20만 원</td></tr>
+            <tr><td>템플릿·PDF 판매</td><td>10~30만 원</td></tr>
+            <tr><td>미니 웹서비스</td><td>10~50만 원</td></tr>
+            <tr><td>소규모 의뢰</td><td>20~50만 원</td></tr>
+          </tbody>
+        </table>
+        <p class="hint">* 실제 수익은 트래픽·콘텐츠 품질·광고 단가에 따라 달라집니다.</p>
+      </div>
+    </section>
+
+    <!-- 실전 가이드 -->
+    <section id="guide" class="grid" style="margin-top:28px">
+      <div class="card span-8">
+        <span class="badge">실전 가이드 ①</span>
+        <h2>코딩 초보도 가능한: GitHub Pages로 무료 배포</h2>
+        <ol class="list">
+          <li><b>GitHub 가입</b> → 새 저장소 이름을 <span class="mono">username.github.io</span> 로 생성</li>
+          <li><b>index.html</b> 파일을 이 페이지 내용으로 저장 후 업로드</li>
+          <li>설정(⚙) → Pages 확인: 기본 브랜치(보통 <span class="mono">main</span>)로 자동 배포</li>
+        </ol>
+        <p class="hint">도메인은 나중에 연결해도 됩니다. (예: <span class="mono">CNAME</span>)</p>
+      </div>
+
+      <div class="card span-4">
+        <span class="badge">SEO</span>
+        <h3>검색에 잘 걸리게 하려면</h3>
+        <ul class="list">
+          <li>제목과 설명에 “돈 벌기, 데이터 시각화, HTML” 핵심 키워드 포함</li>
+          <li>포스트마다 800~1500자 이상 + 예제 코드/이미지</li>
+          <li>내부 링크로 글끼리 연결</li>
+        </ul>
+      </div>
+
+      <div class="card span-12">
+        <span class="badge">실전 가이드 ②</span>
+        <h2>공공데이터로 시각화 콘텐츠 만들기 (Chart.js)</h2>
+        <p class="muted">아래 차트는 “키워드 트렌드(가상 데이터)”를 예시로 보여줍니다. 처음엔 하드코딩(배열)으로 시작하고, 익숙해지면 CSV/API 연동으로 확장하세요.</p>
+        <canvas id="trendChart" height="120"></canvas>
+        <details style="margin-top:12px">
+          <summary class="mono">예제 데이터/코드 설명 펼치기</summary>
+          <p class="hint">CSV를 쓰고 싶다면 <span class="mono">/data/keyword_trend.csv</span> 파일을 만들고 Raw URL로 불러오세요. (초보자는 아래 하드코딩된 배열부터 시작!)</p>
+          <pre><code>// 1) 이 페이지 하단 &lt;script&gt;의 labels, data 배열을 교체하면 바로 반영됩니다.
+// 2) CSV 사용 시: GitHub에 data/keyword_trend.csv 업로드 → fetch('https://raw.githubusercontent.com/USERNAME/REPO/main/data/keyword_trend.csv')</code></pre>
+        </details>
+      </div>
+
+      <div class="card span-12">
+        <span class="badge">실전 가이드 ③</span>
+        <h2>광고 달고 수익 올리기 (AdSense)</h2>
+        <ol class="list">
+          <li>콘텐츠 10개 이상, 기본 페이지(소개/문의/개인정보처리방침) 준비</li>
+          <li>애드센스 신청 → 승인되면 이 페이지 상단 주석 스크립트의 <span class="mono">YOUR-ADSENSE-CLIENT</span> 바꾸고 해제</li>
+          <li>CTR 높은 위치: 본문 중간, 제목 아래, 목록 사이</li>
+        </ol>
+        <div class="ad-slot">여기는 광고 영역(예시). 승인 후 실제 광고 코드로 교체.</div>
+      </div>
+    </section>
+
+    <!-- 데이터 시각화 예제 -->
+    <section id="viz" class="grid" style="margin-top:28px">
+      <div class="card span-6">
+        <span class="badge">예제 A</span>
+        <h3>날씨 데이터 → 간단 라인차트</h3>
+        <p class="muted">CSV/API로 온도/습도 등 시계열을 시각화하면 트래픽이 잘 붙습니다.</p>
+        <ul class="list">
+          <li>키워드: <code>날씨, 기온, 미세먼지, 서울</code></li>
+          <li>유입 포인트: 계절 이슈, 일교차, 황사</li>
+        </ul>
+      </div>
+      <div class="card span-6">
+        <span class="badge">예제 B</span>
+        <h3>부동산/주식 → 관심 지역·종목 차트</h3>
+        <p class="muted">관심 키워드로 꾸준히 업데이트하면 북마크/재방문을 확보할 수 있어요.</p>
+        <ul class="list">
+          <li>키워드: <code>전세, 매매, 금리, 코스피</code></li>
+          <li>유입 포인트: 정책·금리 이슈</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 수익 전략 -->
+    <section id="money" class="grid" style="margin-top:28px">
+      <div class="card span-8">
+        <span class="badge">수익 구조</span>
+        <h2>광고·제휴·템플릿 3축 전략</h2>
+        <ul class="list">
+          <li><b>광고/제휴:</b> 검색 유입 글을 늘리고, 글 내부에 자연스럽게 배치</li>
+          <li><b>디지털 상품:</b> 시각화 템플릿(HTML/Chart.js), 요약 PDF</li>
+          <li><b>미니 서비스:</b> “키워드 트렌드 리포트 생성기” 같은 소형 구독</li>
+        </ul>
+      </div>
+      <div class="card span-4">
+        <span class="badge">체크리스트</span>
+        <h3>애드센스 승인 준비</h3>
+        <ul class="list">
+          <li><span class="ok">✔</span> 글 10개↑</li>
+          <li><span class="ok">✔</span> 소개/문의/정책 페이지</li>
+          <li><span class="ok">✔</span> 표절·성인·저작권 위반 없음</li>
+        </ul>
+      </div>
+      <div class="card span-12">
+        <span class="badge">예상 수익표</span>
+        <table class="table">
+          <thead><tr><th>일일 페이지뷰</th><th>월간 페이지뷰</th><th>예상 월 수익(대략)</th></tr></thead>
+          <tbody>
+            <tr><td>100</td><td>3,000</td><td>3,000 ~ 10,000원</td></tr>
+            <tr><td>300</td><td>9,000</td><td>10,000 ~ 30,000원</td></tr>
+            <tr><td>1,000</td><td>30,000</td><td>30,000 ~ 100,000원</td></tr>
+          </tbody>
+        </table>
+        <p class="hint">* 지역·주제·광고 단가(eCPM)에 따라 편차가 큼</p>
+      </div>
+    </section>
+
+    <!-- 템플릿/자료실 -->
+    <section id="resources" class="grid" style="margin-top:28px">
+      <div class="card span-12">
+        <span class="badge">다운로드</span>
+        <h2>무료 수익형 섹션 템플릿 (복붙용)</h2>
+        <p class="muted">아래 블록을 다른 글에도 붙여 쓰세요.</p>
+        <pre><code>&lt;section class="card"&gt;
+  &lt;h3&gt;[제목] 트래픽이 붙는 이유&lt;/h3&gt;
+  &lt;p class="muted"&gt;핵심 키워드: &lt;code&gt;예: 날씨, 금리, 부동산&lt;/code&gt;&lt;/p&gt;
+  &lt;ul class="list"&gt;
+    &lt;li&gt;문제 정의 → 독자 가치를 한 줄로&lt;/li&gt;
+    &lt;li&gt;시각화 1개 → 차트/표/지도 중 1개&lt;/li&gt;
+    &lt;li&gt;행동 유도(CTA) → 관련 글/구독/템플릿 링크&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/section&gt;</code></pre>
+      </div>
+    </section>
+
+    <footer class="footer">
+      © <span id="year"></span> HTML × Big Data · 작성자: 당신의 이름 · <a href="#home">위로</a>
+    </footer>
+  </main>
+
+  <!-- 차트/유틸 스크립트 -->
+  <script>
+    // 푸터 연도
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // === 데모 라인차트 (가상 데이터) ===
+    // 필요 시 이 배열만 교체하면 됩니다.
+    const labels = ["6월","7월","8월","9월","10월","11월"];
+    const data = [18, 22, 38, 33, 42, 51]; // '돈 버는 키워드' 검색량 같은 개념
+
+    const ctx = document.getElementById('trendChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{
+          label: '키워드 트렌드(예시)',
+          data,
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true },
+          tooltip: { mode: 'index', intersect: false }
+        },
+        interaction: { mode: 'nearest', intersect: false },
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+
+    // === CSV로 바꾸고 싶다면 (선택) ===
+    // 1) data/keyword_trend.csv 를 리포지토리에 업로드 (헤더: month,value)
+    // 2) 아래 fetch URL을 Raw 파일 주소로 교체 후 주석 해제
+    /*
+    fetch('https://raw.githubusercontent.com/USERNAME/REPO/main/data/keyword_trend.csv')
+      .then(res => res.text())
+      .then(txt => {
+        const rows = txt.trim().split('\n').slice(1);
+        const lbls = [], vals = [];
+        rows.forEach(r=>{
+          const [m,v] = r.split(',');
+          lbls.push(m); vals.push(Number(v));
+        });
+        // 차트 업데이트
+        chart.data.labels = lbls;
+        chart.data.datasets[0].data = vals;
+        chart.update();
+      });
+    */
+  </script>
+</body>
+</html>

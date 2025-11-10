@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>공공데이터로 시각화 콘텐츠 만드는 법 (Chart.js)</title>
+<link rel="canonical" href="https://cwpark1011-bit.github.io/polo/posts/002-chartjs-publicdata.html">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{--bg:#f7fbff;--card:#fff;--text:#0f172a;--muted:#475569;--blue:#2563eb;--line:#e2e8f0}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Pretendard,Apple SD Gothic Neo,Noto Sans KR,sans-serif}
+a{color:var(--blue)}a:hover{text-decoration:underline}.container{max-width:900px;margin:0 auto;padding:24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px}
+pre{background:#f1f5f9;border:1px solid var(--line);padding:12px;border-radius:10px;overflow:auto}
+.nav{padding:12px 24px;border-bottom:1px solid var(--line);background:#ffffffcc;backdrop-filter:blur(6px);position:sticky;top:0}
+</style>
+</head>
+<body>
+<nav class="nav"><a href="../">← 홈</a> · <a href="./">글 목록</a></nav>
+<main class="container">
+<h1>공공데이터로 시각화 콘텐츠 만드는 법 (Chart.js)</h1>
+<p class="card">핵심: <b>CSV → 차트</b>. 처음엔 하드코딩 배열로 성공 경험을 만들고, 곧바로 CSV/API로 변경.</p>
+
+<h2>1) 데모 차트</h2>
+<canvas id="chart" height="120"></canvas>
+
+<h2>2) CSV로 바꾸는 법</h2>
+<ol>
+<li>저장소에 <code>data/keyword_trend.csv</code> 업로드 (내용 예시 아래)</li>
+<li>아래 스크립트의 <code>fetch()</code> 주석 해제</li>
+</ol>
+
+<pre>CSV 예시 (data/keyword_trend.csv)
+month,value
+2025-06,18
+2025-07,22
+2025-08,38
+2025-09,33
+2025-10,42
+2025-11,51
+</pre>
+
+<h2>3) 코드</h2>
+<pre><code>&lt;script&gt;
+// 하드코딩 데이터(초기 연습)
+const labels = ["6월","7월","8월","9월","10월","11월"];
+const values = [18,22,38,33,42,51];
+
+const ctx = document.getElementById('chart').getContext('2d');
+const chart = new Chart(ctx,{
+  type:'line',
+  data:{ labels, datasets:[{ label:'키워드 트렌드(예시)', data:values, tension:0.3 }] },
+  options:{ responsive:true, scales:{ y:{beginAtZero:true} } }
+});
+
+// === CSV 쓰려면 아래 주석 해제 ===
+// fetch('https://raw.githubusercontent.com/cwpark1011-bit/polo/main/data/keyword_trend.csv')
+//   .then(r=>r.text())
+//   .then(txt=>{
+//     const rows = txt.trim().split('\n').slice(1);
+//     const lbls=[], vals=[];
+//     rows.forEach(r=>{
+//       const [m,v] = r.split(',');
+//       lbls.push(m); vals.push(Number(v));
+//     });
+//     chart.data.labels = lbls;
+//     chart.data.datasets[0].data = vals;
+//     chart.update();
+//   });
+&lt;/script&gt;</code></pre>
+
+<h2>4) 트래픽이 붙는 주제</h2>
+<ul>
+<li>날씨/미세먼지/기온 변화</li>
+<li>금리/환율/코스피 지수</li>
+<li>부동산 실거래가, 전세/매매 지수</li>
+<li>검색 키워드 트렌드(네이버 데이터랩, 공공데이터)</li>
+</ul>
+
+<p class="card">다음 글: <a href="003-adsense-strategy.html">애드센스 승인/배치 전략</a></p>
+</main>
+</body>
+</html>

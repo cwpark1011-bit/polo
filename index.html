@@ -1,285 +1,72 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>HTML과 빅데이터로 돈 벌기 | polo</title>
-  <meta name="description" content="비전공자도 HTML과 데이터 시각화로 자동 수익 구조를 만드는 실전 가이드" />
-  <link rel="canonical" href="https://cwpark1011-bit.github.io/polo/">
-  <meta property="og:title" content="HTML과 빅데이터로 돈 벌기 | polo">
-  <meta property="og:description" content="GitHub Pages + 공공데이터 시각화 + 광고/제휴/템플릿으로 수익 만들기">
-  <meta property="og:url" content="https://cwpark1011-bit.github.io/polo/">
-  <meta property="og:type" content="website">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💰</text></svg>">
-
-  <!-- 외부 라이브러리는 CDN 사용 → 프로젝트 페이지(/polo/)에서도 경로 문제 없음 -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <!-- AdSense: 승인 후 client 값 바꾸고 주석 해제 -->
-  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR-ADSENSE-CLIENT" crossorigin="anonymous"></script> -->
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HTML과 빅데이터로 돈 벌기</title>
+  <meta name="description" content="비전공자도 HTML과 데이터 시각화로 수익형 구조를 만드는 실전 가이드" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CPN702M407"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CPN702M407');
+  </script>
   <style>
     :root{
-      --bg:#f7fbff; --card:#fff; --text:#0f172a; --muted:#475569;
-      --blue:#2563eb; --blue-2:#1d4ed8; --line:#e2e8f0;
+      --bg:#f7fbff;
+      --text:#07172a;
+      --point:#2563eb;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Pretendard,Apple SD Gothic Neo,Noto Sans KR,sans-serif}
-    a{color:var(--blue);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:1000px;margin:0 auto;padding:24px}
-    .nav{position:sticky;top:0;background:rgba(247,251,255,.88);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--line);z-index:50}
-    .nav-inner{max-width:1000px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:12px 24px}
-    .brand{font-weight:800;letter-spacing:.2px;color:var(--blue)}
-    .menu{margin-left:auto;display:flex;gap:16px;flex-wrap:wrap}
-    .menu a{padding:8px 10px;border-radius:10px}
-    .menu a:hover{background:#eaf1ff}
-    <a href="pages/about.html">소개</a>
-<a href="pages/contact.html">문의</a>
-<a href="pages/privacy.html">정책</a>
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;margin-top:24px}
-    .hero-card{background:linear-gradient(180deg,#ffffff, #f1f5ff);border:1px solid var(--line);border-radius:18px;padding:28px}
-    .h1{font-size:34px;line-height:1.2;margin:0 0 12px}
-    .muted{color:var(--muted)}
-    .cta{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
-    .btn{background:var(--blue);color:#fff;border:none;border-radius:12px;padding:12px 16px;font-weight:700;cursor:pointer}
-    .btn:hover{background:var(--blue-2)}
-    .btn-ghost{background:#eaf1ff;color:var(--blue);border:1px solid #cfe0ff}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-    .card{grid-column:span 12;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
-    @media(min-width:900px){ .span-6{grid-column:span 6} .span-4{grid-column:span 4} .span-8{grid-column:span 8} }
-    .badge{display:inline-block;background:#eaf1ff;color:var(--blue);border:1px solid #cfe0ff;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700}
-    .kicker{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:800}
-    .footer{margin:48px 0 12px;color:var(--muted);font-size:14px;text-align:center}
-    .list{margin:0;padding-left:18px}
-    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
-    code{background:#f1f5f9;border:1px solid var(--line);padding:3px 6px;border-radius:8px}
-    .ad-slot{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:12px;padding:14px;color:#64748b;text-align:center}
-    .table{width:100%;border-collapse:collapse}
-    .table th,.table td{border-bottom:1px solid var(--line);padding:10px;text-align:left;font-size:14px}
-    .hint{font-size:13px;color:#64748b}
-    .ok{color:#059669;font-weight:700}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,-apple-system,"Segoe UI",Pretendard,sans-serif;
+      margin:0;line-height:1.7;
+    }
+    header{
+      position:sticky;top:0;background:white;
+      border-bottom:1px solid #e5eaf0;padding:12px 24px;
+      display:flex;justify-content:space-between;align-items:center;
+    }
+    nav a{color:var(--point);text-decoration:none;margin-right:16px;font-weight:500;}
+    nav a:hover{text-decoration:underline;}
+    main{max-width:800px;margin:60px auto;padding:0 16px;}
+    .card{background:white;border:1px solid #e5eaf0;border-radius:12px;padding:20px;margin-bottom:20px;}
+    .card:hover{box-shadow:0 4px 10px rgba(0,0,0,.05);}
+    .card a{color:var(--point);text-decoration:none;}
+    .card a:hover{text-decoration:underline;}
   </style>
 </head>
 <body>
-  <!-- 상단 내비게이션 -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <div class="brand">💰 HTML × 빅데이터</div>
-      <div class="menu">
-        <a href="#home">홈</a>
-        <a href="#guide">실전 가이드</a>
-        <a href="#viz">데이터 시각화</a>
-        <a href="#money">수익 전략</a>
-        <a href="#resources">템플릿</a>
-      </div>
+  <header>
+    <nav>
+      <a href="index.html" style="font-weight:bold;">홈</a>
+      <a href="pages/about.html">소개</a>
+      <a href="pages/contact.html">문의</a>
+      <a href="pages/privacy.html">정책</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>글 목록</h1>
+    <p>실전 가이드와 수익 전략을 정리합니다.</p>
+
+    <div class="card">
+      <a href="posts/001-html-adsense.html"><h2>코딩 초보가 HTML로 수익형 페이지 만드는 법</h2></a>
+      <p>GitHub Pages로 무료 배포하고, 기본 구조와 광고 영역까지 준비하기.</p>
     </div>
-  </nav>
 
-  <main class="container" id="home">
-    <!-- 히어로 -->
-    <section class="hero">
-      <div class="hero-card">
-        <div class="kicker">Make Money with Data & Code</div>
-        <h1 class="h1">HTML과 데이터로 <span style="color:var(--blue)">쉽게 수익</span> 만드는 법</h1>
-        <p class="muted">비전공자도 가능한 실전형 가이드: GitHub Pages로 무료 배포, 공공데이터 시각화, 광고·제휴·템플릿 판매까지.</p>
-        <div class="cta">
-          <a class="btn" href="#guide">시작하기</a>
-          <a class="btn btn-ghost" href="#money">수익 구조 보기</a>
-        </div>
-      </div>
-      <div class="hero-card">
-        <span class="badge">데모</span>
-        <h3>한눈에 보는 수익 목표</h3>
-        <table class="table">
-          <thead><tr><th>항목</th><th>현실적 월 목표</th></tr></thead>
-          <tbody>
-            <tr><td>블로그 광고/제휴</td><td>5~20만 원</td></tr>
-            <tr><td>템플릿·PDF 판매</td><td>10~30만 원</td></tr>
-            <tr><td>미니 웹서비스</td><td>10~50만 원</td></tr>
-            <tr><td>소규모 의뢰</td><td>20~50만 원</td></tr>
-          </tbody>
-        </table>
-        <p class="hint">* 실제 수익은 트래픽·콘텐츠 품질·광고 단가에 따라 달라집니다.</p>
-      </div>
-    </section>
+    <div class="card">
+      <a href="posts/002-chartjs-publicdata.html"><h2>공공데이터로 시각화 콘텐츠 만드는 법 (Chart.js)</h2></a>
+      <p>CSV 불러오기 → 차트로 시각화 → 트래픽을 부르는 주제 선정 팁.</p>
+    </div>
 
-    <!-- 실전 가이드 -->
-    <section id="guide" class="grid" style="margin-top:28px">
-      <div class="card span-8">
-        <span class="badge">실전 가이드 ①</span>
-        <h2>코딩 초보도 가능한: GitHub Pages로 무료 배포</h2>
-        <ol class="list">
-          <li><b>GitHub 가입</b> → 새 저장소 만들기(이 프로젝트는 <span class="mono">polo</span>)</li>
-          <li><b>index.html</b> 파일을 이 내용으로 저장 후 업로드</li>
-          <li>상단 <b>Settings → Pages</b>에서 Branch <span class="mono">main</span>, Folder <span class="mono">/ (root)</span></li>
-        </ol>
-        <p class="hint">사이트 주소: <code>https://cwpark1011-bit.github.io/polo/</code></p>
-      </div>
-
-      <div class="card span-4">
-        <span class="badge">SEO</span>
-        <h3>검색에 잘 걸리게 하려면</h3>
-        <ul class="list">
-          <li>제목/설명에 “돈 벌기, 데이터 시각화, HTML” 포함</li>
-          <li>포스트마다 800~1500자 + 예제 코드/이미지</li>
-          <li>내부 링크로 글끼리 연결</li>
-        </ul>
-      </div>
-
-      <div class="card span-12">
-        <span class="badge">실전 가이드 ②</span>
-        <h2>공공데이터로 시각화 콘텐츠 만들기 (Chart.js)</h2>
-        <p class="muted">아래 차트는 “키워드 트렌드(가상 데이터)” 예시입니다. 처음엔 하드코딩 배열로 시작하고, 익숙해지면 CSV/API 연동으로 확장하세요.</p>
-        <canvas id="trendChart" height="120"></canvas>
-        <details style="margin-top:12px">
-          <summary class="mono">예제 데이터/코드 설명 펼치기</summary>
-          <p class="hint">CSV를 쓰려면 이 저장소에 <span class="mono">data/keyword_trend.csv</span> 업로드 후 아래 fetch URL 사용.</p>
-          <pre><code>// CSV 사용 시(헤더: month,value):
-// https://raw.githubusercontent.com/cwpark1011-bit/polo/main/data/keyword_trend.csv
-// month,value
-// 2025-06,18
-// 2025-07,22
-// ...
-</code></pre>
-        </details>
-      </div>
-
-      <div class="card span-12">
-        <span class="badge">실전 가이드 ③</span>
-        <h2>광고 달고 수익 올리기 (AdSense)</h2>
-        <ol class="list">
-          <li>콘텐츠 10개 이상 + 소개/문의/정책 페이지 준비</li>
-          <li>애드센스 승인 후 상단 스크립트의 <span class="mono">YOUR-ADSENSE-CLIENT</span> 교체</li>
-          <li>CTR 높은 위치: 제목 아래, 본문 중간, 목록 사이</li>
-        </ol>
-        <div class="ad-slot">광고 영역(예시). 승인 후 실제 광고 코드로 교체하세요.</div>
-      </div>
-    </section>
-
-    <!-- 데이터 시각화 예제 -->
-    <section id="viz" class="grid" style="margin-top:28px">
-      <div class="card span-6">
-        <span class="badge">예제 A</span>
-        <h3>날씨 데이터 → 간단 라인차트</h3>
-        <p class="muted">CSV/API로 온도/습도 등 시계열을 시각화하면 트래픽이 잘 붙습니다.</p>
-        <ul class="list">
-          <li>키워드: <code>날씨, 기온, 미세먼지, 서울</code></li>
-          <li>유입 포인트: 계절 이슈, 일교차, 황사</li>
-        </ul>
-      </div>
-      <div class="card span-6">
-        <span class="badge">예제 B</span>
-        <h3>부동산/주식 → 관심 지역·종목 차트</h3>
-        <p class="muted">관심 키워드로 꾸준히 업데이트하면 북마크/재방문을 확보할 수 있어요.</p>
-        <ul class="list">
-          <li>키워드: <code>전세, 매매, 금리, 코스피</code></li>
-          <li>유입 포인트: 정책·금리 이슈</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- 수익 전략 -->
-    <section id="money" class="grid" style="margin-top:28px">
-      <div class="card span-8">
-        <span class="badge">수익 구조</span>
-        <h2>광고·제휴·템플릿 3축 전략</h2>
-        <ul class="list">
-          <li><b>광고/제휴:</b> 검색 유입 글을 늘리고, 글 내부에 자연스럽게 배치</li>
-          <li><b>디지털 상품:</b> 시각화 템플릿(HTML/Chart.js), 요약 PDF</li>
-          <li><b>미니 서비스:</b> “키워드 트렌드 리포트 생성기” 같은 소형 구독</li>
-        </ul>
-      </div>
-      <div class="card span-4">
-        <span class="badge">체크리스트</span>
-        <h3>애드센스 승인 준비</h3>
-        <ul class="list">
-          <li><span class="ok">✔</span> 글 10개↑</li>
-          <li><span class="ok">✔</span> 소개/문의/정책 페이지</li>
-          <li><span class="ok">✔</span> 표절·성인·저작권 위반 없음</li>
-        </ul>
-      </div>
-      <div class="card span-12">
-        <span class="badge">예상 수익표</span>
-        <table class="table">
-          <thead><tr><th>일일 페이지뷰</th><th>월간 페이지뷰</th><th>예상 월 수익(대략)</th></tr></thead>
-          <tbody>
-            <tr><td>100</td><td>3,000</td><td>3,000 ~ 10,000원</td></tr>
-            <tr><td>300</td><td>9,000</td><td>10,000 ~ 30,000원</td></tr>
-            <tr><td>1,000</td><td>30,000</td><td>30,000 ~ 100,000원</td></tr>
-          </tbody>
-        </table>
-        <p class="hint">* 지역·주제·광고 단가(eCPM)에 따라 편차가 큼</p>
-      </div>
-    </section>
-
-    <!-- 템플릿/자료실 -->
-    <section id="resources" class="grid" style="margin-top:28px">
-      <div class="card span-12">
-        <span class="badge">다운로드</span>
-        <h2>무료 수익형 섹션 템플릿 (복붙용)</h2>
-        <p class="muted">아래 블록을 다른 글에도 붙여 쓰세요.</p>
-        <pre><code>&lt;section class="card"&gt;
-  &lt;h3&gt;[제목] 트래픽이 붙는 이유&lt;/h3&gt;
-  &lt;p class="muted"&gt;핵심 키워드: &lt;code&gt;예: 날씨, 금리, 부동산&lt;/code&gt;&lt;/p&gt;
-  &lt;ul class="list"&gt;
-    &lt;li&gt;문제 정의 → 독자 가치를 한 줄로&lt;/li&gt;
-    &lt;li&gt;시각화 1개 → 차트/표/지도 중 1개&lt;/li&gt;
-    &lt;li&gt;행동 유도(CTA) → 관련 글/구독/템플릿 링크&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/section&gt;</code></pre>
-      </div>
-    </section>
-
-    <footer class="footer">
-      © <span id="year"></span> HTML × Big Data · By cwpark1011-bit · <a href="#home">위로</a>
-    </footer>
+    <div class="card">
+      <a href="posts/003-adsense-strategy.html"><h2>광고 달고 수익 올리는 구조 (AdSense 전략)</h2></a>
+      <p>승인 요건, 배치 최적화, 정책 주의사항, 예상 수익표.</p>
+    </div>
   </main>
-
-  <!-- 스크립트 -->
-  <script>
-    // 연도 자동
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // === 데모 라인차트 (가상 데이터) ===
-    const labels = ["6월","7월","8월","9월","10월","11월"];
-    const data = [18, 22, 38, 33, 42, 51];
-
-    const ctx = document.getElementById('trendChart').getContext('2d');
-    const chart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels,
-        datasets: [{ label: '키워드 트렌드(예시)', data, tension: 0.3 }]
-      },
-      options: {
-        responsive: true,
-        plugins: { legend:{display:true}, tooltip:{mode:'index',intersect:false} },
-        interaction:{mode:'nearest',intersect:false},
-        scales:{ y:{beginAtZero:true} }
-      }
-    });
-
-    // === CSV로 교체하고 싶다면 (선택) ===
-    // 1) 저장소에 data/keyword_trend.csv 업로드 (헤더: month,value)
-    // 2) 아래 fetch URL 주석 해제
-    /*
-    fetch('https://raw.githubusercontent.com/cwpark1011-bit/polo/main/data/keyword_trend.csv')
-      .then(res => res.text())
-      .then(txt => {
-        const rows = txt.trim().split('\n').slice(1);
-        const lbls = [], vals = [];
-        rows.forEach(r => {
-          const [m, v] = r.split(',');
-          lbls.push(m); vals.push(Number(v));
-        });
-        chart.data.labels = lbls;
-        chart.data.datasets[0].data = vals;
-        chart.update();
-      });
-    */
-  </script>
 </body>
 </html>
-

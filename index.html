@@ -3,25 +3,29 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>HTML과 빅데이터로 돈 벌기</title>
+  <title>HTML과 빅데이터로 돈 벌기 | polo</title>
   <meta name="description" content="비전공자도 HTML과 데이터 시각화로 자동 수익 구조를 만드는 실전 가이드" />
+  <link rel="canonical" href="https://cwpark1011-bit.github.io/polo/">
+  <meta property="og:title" content="HTML과 빅데이터로 돈 벌기 | polo">
+  <meta property="og:description" content="GitHub Pages + 공공데이터 시각화 + 광고/제휴/템플릿으로 수익 만들기">
+  <meta property="og:url" content="https://cwpark1011-bit.github.io/polo/">
+  <meta property="og:type" content="website">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💰</text></svg>">
-  <!-- Chart.js (시각화 예제용) -->
+
+  <!-- 외부 라이브러리는 CDN 사용 → 프로젝트 페이지(/polo/)에서도 경로 문제 없음 -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <!-- 구글 애드센스는 승인 후 아래 주석을 해제하세요 -->
+
+  <!-- AdSense: 승인 후 client 값 바꾸고 주석 해제 -->
   <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR-ADSENSE-CLIENT" crossorigin="anonymous"></script> -->
+
   <style>
     :root{
-      --bg:#f7fbff;      /* 밝은 배경 */
-      --card:#ffffff;
-      --text:#0f172a;    /* slate-900 */
-      --muted:#475569;   /* slate-600 */
-      --blue:#2563eb;    /* 파랑 포인트 */
-      --blue-2:#1d4ed8;
-      --line:#e2e8f0;    /* 경계선 */
+      --bg:#f7fbff; --card:#fff; --text:#0f172a; --muted:#475569;
+      --blue:#2563eb; --blue-2:#1d4ed8; --line:#e2e8f0;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Pretendard,Apple SD Gothic Neo,Noto Sans KR,sans-serif}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Pretendard,Apple SD Gothic Neo,Noto Sans KR,sans-serif}
     a{color:var(--blue);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:1000px;margin:0 auto;padding:24px}
@@ -41,16 +45,12 @@
     .btn-ghost{background:#eaf1ff;color:var(--blue);border:1px solid #cfe0ff}
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
     .card{grid-column:span 12;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
-    @media(min-width:900px){
-      .span-6{grid-column:span 6}
-      .span-4{grid-column:span 4}
-      .span-8{grid-column:span 8}
-    }
+    @media(min-width:900px){ .span-6{grid-column:span 6} .span-4{grid-column:span 4} .span-8{grid-column:span 8} }
     .badge{display:inline-block;background:#eaf1ff;color:var(--blue);border:1px solid #cfe0ff;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700}
     .kicker{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:800}
     .footer{margin:48px 0 12px;color:var(--muted);font-size:14px;text-align:center}
     .list{margin:0;padding-left:18px}
-    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
     code{background:#f1f5f9;border:1px solid var(--line);padding:3px 6px;border-radius:8px}
     .ad-slot{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:12px;padding:14px;color:#64748b;text-align:center}
     .table{width:100%;border-collapse:collapse}
@@ -108,19 +108,19 @@
         <span class="badge">실전 가이드 ①</span>
         <h2>코딩 초보도 가능한: GitHub Pages로 무료 배포</h2>
         <ol class="list">
-          <li><b>GitHub 가입</b> → 새 저장소 이름을 <span class="mono">username.github.io</span> 로 생성</li>
-          <li><b>index.html</b> 파일을 이 페이지 내용으로 저장 후 업로드</li>
-          <li>설정(⚙) → Pages 확인: 기본 브랜치(보통 <span class="mono">main</span>)로 자동 배포</li>
+          <li><b>GitHub 가입</b> → 새 저장소 만들기(이 프로젝트는 <span class="mono">polo</span>)</li>
+          <li><b>index.html</b> 파일을 이 내용으로 저장 후 업로드</li>
+          <li>상단 <b>Settings → Pages</b>에서 Branch <span class="mono">main</span>, Folder <span class="mono">/ (root)</span></li>
         </ol>
-        <p class="hint">도메인은 나중에 연결해도 됩니다. (예: <span class="mono">CNAME</span>)</p>
+        <p class="hint">사이트 주소: <code>https://cwpark1011-bit.github.io/polo/</code></p>
       </div>
 
       <div class="card span-4">
         <span class="badge">SEO</span>
         <h3>검색에 잘 걸리게 하려면</h3>
         <ul class="list">
-          <li>제목과 설명에 “돈 벌기, 데이터 시각화, HTML” 핵심 키워드 포함</li>
-          <li>포스트마다 800~1500자 이상 + 예제 코드/이미지</li>
+          <li>제목/설명에 “돈 벌기, 데이터 시각화, HTML” 포함</li>
+          <li>포스트마다 800~1500자 + 예제 코드/이미지</li>
           <li>내부 링크로 글끼리 연결</li>
         </ul>
       </div>
@@ -128,13 +128,18 @@
       <div class="card span-12">
         <span class="badge">실전 가이드 ②</span>
         <h2>공공데이터로 시각화 콘텐츠 만들기 (Chart.js)</h2>
-        <p class="muted">아래 차트는 “키워드 트렌드(가상 데이터)”를 예시로 보여줍니다. 처음엔 하드코딩(배열)으로 시작하고, 익숙해지면 CSV/API 연동으로 확장하세요.</p>
+        <p class="muted">아래 차트는 “키워드 트렌드(가상 데이터)” 예시입니다. 처음엔 하드코딩 배열로 시작하고, 익숙해지면 CSV/API 연동으로 확장하세요.</p>
         <canvas id="trendChart" height="120"></canvas>
         <details style="margin-top:12px">
           <summary class="mono">예제 데이터/코드 설명 펼치기</summary>
-          <p class="hint">CSV를 쓰고 싶다면 <span class="mono">/data/keyword_trend.csv</span> 파일을 만들고 Raw URL로 불러오세요. (초보자는 아래 하드코딩된 배열부터 시작!)</p>
-          <pre><code>// 1) 이 페이지 하단 &lt;script&gt;의 labels, data 배열을 교체하면 바로 반영됩니다.
-// 2) CSV 사용 시: GitHub에 data/keyword_trend.csv 업로드 → fetch('https://raw.githubusercontent.com/USERNAME/REPO/main/data/keyword_trend.csv')</code></pre>
+          <p class="hint">CSV를 쓰려면 이 저장소에 <span class="mono">data/keyword_trend.csv</span> 업로드 후 아래 fetch URL 사용.</p>
+          <pre><code>// CSV 사용 시(헤더: month,value):
+// https://raw.githubusercontent.com/cwpark1011-bit/polo/main/data/keyword_trend.csv
+// month,value
+// 2025-06,18
+// 2025-07,22
+// ...
+</code></pre>
         </details>
       </div>
 
@@ -142,11 +147,11 @@
         <span class="badge">실전 가이드 ③</span>
         <h2>광고 달고 수익 올리기 (AdSense)</h2>
         <ol class="list">
-          <li>콘텐츠 10개 이상, 기본 페이지(소개/문의/개인정보처리방침) 준비</li>
-          <li>애드센스 신청 → 승인되면 이 페이지 상단 주석 스크립트의 <span class="mono">YOUR-ADSENSE-CLIENT</span> 바꾸고 해제</li>
-          <li>CTR 높은 위치: 본문 중간, 제목 아래, 목록 사이</li>
+          <li>콘텐츠 10개 이상 + 소개/문의/정책 페이지 준비</li>
+          <li>애드센스 승인 후 상단 스크립트의 <span class="mono">YOUR-ADSENSE-CLIENT</span> 교체</li>
+          <li>CTR 높은 위치: 제목 아래, 본문 중간, 목록 사이</li>
         </ol>
-        <div class="ad-slot">여기는 광고 영역(예시). 승인 후 실제 광고 코드로 교체.</div>
+        <div class="ad-slot">광고 영역(예시). 승인 후 실제 광고 코드로 교체하세요.</div>
       </div>
     </section>
 
@@ -225,58 +230,47 @@
     </section>
 
     <footer class="footer">
-      © <span id="year"></span> HTML × Big Data · 작성자: 당신의 이름 · <a href="#home">위로</a>
+      © <span id="year"></span> HTML × Big Data · By cwpark1011-bit · <a href="#home">위로</a>
     </footer>
   </main>
 
-  <!-- 차트/유틸 스크립트 -->
+  <!-- 스크립트 -->
   <script>
-    // 푸터 연도
+    // 연도 자동
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // === 데모 라인차트 (가상 데이터) ===
-    // 필요 시 이 배열만 교체하면 됩니다.
     const labels = ["6월","7월","8월","9월","10월","11월"];
-    const data = [18, 22, 38, 33, 42, 51]; // '돈 버는 키워드' 검색량 같은 개념
+    const data = [18, 22, 38, 33, 42, 51];
 
     const ctx = document.getElementById('trendChart').getContext('2d');
-    new Chart(ctx, {
+    const chart = new Chart(ctx, {
       type: 'line',
       data: {
         labels,
-        datasets: [{
-          label: '키워드 트렌드(예시)',
-          data,
-          tension: 0.3
-        }]
+        datasets: [{ label: '키워드 트렌드(예시)', data, tension: 0.3 }]
       },
       options: {
         responsive: true,
-        plugins: {
-          legend: { display: true },
-          tooltip: { mode: 'index', intersect: false }
-        },
-        interaction: { mode: 'nearest', intersect: false },
-        scales: {
-          y: { beginAtZero: true }
-        }
+        plugins: { legend:{display:true}, tooltip:{mode:'index',intersect:false} },
+        interaction:{mode:'nearest',intersect:false},
+        scales:{ y:{beginAtZero:true} }
       }
     });
 
-    // === CSV로 바꾸고 싶다면 (선택) ===
-    // 1) data/keyword_trend.csv 를 리포지토리에 업로드 (헤더: month,value)
-    // 2) 아래 fetch URL을 Raw 파일 주소로 교체 후 주석 해제
+    // === CSV로 교체하고 싶다면 (선택) ===
+    // 1) 저장소에 data/keyword_trend.csv 업로드 (헤더: month,value)
+    // 2) 아래 fetch URL 주석 해제
     /*
-    fetch('https://raw.githubusercontent.com/USERNAME/REPO/main/data/keyword_trend.csv')
+    fetch('https://raw.githubusercontent.com/cwpark1011-bit/polo/main/data/keyword_trend.csv')
       .then(res => res.text())
       .then(txt => {
         const rows = txt.trim().split('\n').slice(1);
         const lbls = [], vals = [];
-        rows.forEach(r=>{
-          const [m,v] = r.split(',');
+        rows.forEach(r => {
+          const [m, v] = r.split(',');
           lbls.push(m); vals.push(Number(v));
         });
-        // 차트 업데이트
         chart.data.labels = lbls;
         chart.data.datasets[0].data = vals;
         chart.update();
